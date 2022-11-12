@@ -4,10 +4,10 @@ sURL = 'http://127.0.0.1:8000/datos'
 
 def Generate():
     dData = {
-        '01': ra.randit(+5,+20),
-        '25': ra.randit(+5,+20),
-        '10': ra.randit(+5,+20),
-        'te': ra.randit(-10,+10)
+        '01': ra.randint(+5,+20),
+        '25': ra.randint(+5,+20),
+        '10': ra.randint(+5,+20),
+        'te': ra.randint(-10,+10)
     }
     return dData
 while 1:
