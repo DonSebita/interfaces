@@ -1,7 +1,6 @@
-from flask import Flask
 import random as ra,requests as req, time as ti
 
-sURL = 'http://127.0.0.1:800/datos'
+sURL = 'http://127.0.0.1:8000/datos'
 
 def Generate():
     dData = {
