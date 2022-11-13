@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+import sqlite3,json
 app= Flask(__name__)
 
 @app.route("/")
@@ -37,7 +37,40 @@ def datos():
 def autos():
     return render_template("4.html")
 
+@app.route("/rutas",methods=["POST"])
+def rutas():
+    #Funcion para poder crear el diccionario con los datos ordenados por fecha y hora
+    def Diccionario(id):
+        #Ahora nos conectamos a la base de datos y creamos un cursor.
+        conex=sqlite3.connect("./datos/gps.db")
+        cursor=conex.cursor()
+        #Consulta
+        consulta="SELECT lat,lon from data WHERE id="+str(id)
+        #Se hace la consulta para poder primeramente obtenenr la latitud y longuitud, para los autos con id=1, y que este ordenados por fecha y hora.
+        cursor.execute(consulta)
+        #Ahora nos devuelve todos los datos que ha encontrado segun la consulta que se realizo, y esto se almacenara en el diccionario de gps.
+        #Luego cerramos todas las conexiones y retornamos el diccionario.
+        lat=cursor.fetchall()
+        gps={'data':lat}
+        cursor.close()
+        conex.close()
+        return gps
+    if request.method == 'POST':
+        global f
+        f=request.content_length
+        gps=Diccionario(f)
+        return gps
+
+@app.route("/prueba",methods=["GET","POST"])
+def datos1():
+    global g
+    g="A"
+    return "A"
+
+
 #http://127.0.0.1:8000/
 
 if __name__=='__main__':
-    app.run(debug=True,host='0.0.0.0' ,port=8000)
+    app.run(debug=True ,port=8000)
+
+
