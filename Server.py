@@ -61,12 +61,6 @@ def rutas():
         gps=Diccionario(f)
         return gps
 
-@app.route("/prueba",methods=["GET","POST"])
-def datos1():
-    global g
-    g="A"
-    return "A"
-
 
 #http://127.0.0.1:8000/
 
