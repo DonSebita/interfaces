@@ -1,6 +1,6 @@
 import random as ra,requests as req, time as ti
 
-sURL = 'http://127.0.0.1:8000/datos'
+sURL = 'http://127.0.0.1:8000/Monitoreo'
 
 def Generate():
     dData = {

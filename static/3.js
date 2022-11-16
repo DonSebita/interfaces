@@ -22,7 +22,7 @@ L.marker([-38.6588862375975,-72.4814466126939], {icon: myIcon}).addEventListener
 
 function principal(id) {
     $.getJSON("http://127.0.0.1:8000/grafica", function(datos) {
-        console.log(datos)
+        console.log(datos) 
         const grafica = document.querySelector(id);
             // Las etiquetas son las que van en el eje X.
             const etiquetas = ["1", "2","3","4"]

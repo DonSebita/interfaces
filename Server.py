@@ -7,9 +7,22 @@ def index1():
     return render_template("app.html")
 
 #1
-@app.route("/Monitoreo")
+k=None
+@app.route("/Monitoreo", methods=['GET','POST'])
 def Monitoreo():
-    return render_template("1.html")
+    if request.method == 'POST':
+        global k
+        k=request.json
+    if k!=None:
+        return render_template('1.html',k=k)
+    return render_template("error.html")
+j=None
+
+@app.route('/gra', methods=['GET'])
+def dat():
+    global j
+    j=k
+    return (j)
 
 #2
 @app.route("/Envio")
