@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
-import sqlite3,json
+import sqlite3,json,telepot, base64
 app= Flask(__name__)
-
 @app.route("/")
 def index1():
     return render_template("app.html")
@@ -25,9 +24,22 @@ def dat():
     return (j)
 
 #2
-@app.route("/Envio")
-def Envio():
-    return render_template("2.html")
+
+Id = '5677378086'
+Token = '5704476540:AAGwZvtCzZw5nIZ4vi1p5ZNtqCOWqHowF4Q'
+l = None
+@app.route("/Envio", methods=['POST'])
+def envio():
+    if request.method == 'POST':
+        global l
+        l=request.get_data()
+        print(l)
+        print(l.decode('utf-8'))
+        #bot = telepot.Bot(Token)
+        #bot.sendPhoto(Id,)
+        return render_template("2.html")
+    return render_template("error.html")
+
 #3
 f=None
 @app.route('/marcadores', methods=['GET','POST'])
