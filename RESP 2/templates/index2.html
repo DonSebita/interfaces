@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Prueba estacion</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<canvas id="myChart" width="250" height="50"></canvas>
+	<canvas id="myChart2" width="250" height="50"></canvas>
+</body>
+	<script>	
+		function getk(){
+		$.getJSON("http://127.0.0.1:5000/datos",function (data)
+		{
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var ctx2 = document.getElementById("myChart2").getContext("2d");
+			function range(size, startAt = 1) {
+    			return [...Array(size).keys()].map(i => i + startAt);
+			};
+
+			function crear(){
+				if (data["EA"]=="E1"){
+				var myChart = new Chart(ctx,{
+				type: "line",
+				data: {
+					labels: range(data["25"].length),
+					datasets:[
+							{
+								label: "Estacion N° 1",
+								data: data["25"],
+								borderColor:["rgb(66,134,244)"],
+							},{
+								label: "Estacion N° 2",
+								borderColor:["rgb(74,135,72)"],
+							},{
+								label: "Estacion N° 3",
+								borderColor:["rgb(255, 0, 0)"],
+							}],
+				 	},
+				options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            					},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 2.5',
+										fontSize: 50,
+										padding:30,
+      									}
+   								 },
+    			},
+			});
+				}
+				if (data["EA"]=="E2"){
+				var myChart = new Chart(ctx,{
+				type: "line",
+				data: {
+					labels: range(data["25"].length),
+					datasets:[
+					{
+								label: ["Estacion N° 1"],
+								borderColor:["rgb(66,134,244)"],
+							},
+							{
+								label: ["Estacion N° 2"],
+								data: data["25"],
+								borderColor:["rgb(74,135,72)"],
+							},
+							{
+								label: ["Estacion N° 3"],
+								borderColor:["rgb(255, 0, 0)"],
+							}
+							],
+						},
+						options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            							},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 2.5',
+										fontSize: 50,
+										padding:30,
+
+      									}
+   								 },
+    					},
+					});
+				}
+
+				if (data["EA"]=="E3"){
+				var myChart = new Chart(ctx,{
+				type: "line",
+				data: {
+					labels: range(data["25"].length),
+					datasets:[
+					{
+								label: ["Estacion N° 1"],
+								borderColor:["rgb(66,134,244)"],
+							},{
+								label: ["Estacion N° 2"],
+								borderColor:["rgb(74,135,72)"],
+							},
+							{
+								label: ["Estacion N° 3"],
+								data: data["25"],
+								borderColor:["rgb(255, 0, 0)"],
+							}
+							],
+						},
+						options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            							},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 2.5',
+										fontSize: 50,
+										padding:30,
+      									}
+   								 },
+    						},
+					});
+					
+				}
+		
+				if (data["EA"]=="E1"){
+				var myChart2 = new Chart(ctx2,{
+					type: "line",
+					data: {
+						labels:range(data["10"].length),
+						datasets:[
+							{
+								label: "Estacion N° 1",
+								data: data["10"],
+								borderColor:["rgb(230, 230, 0)"],
+							},{
+								label: "Estacion N° 2",
+								borderColor:["rgb(153, 51, 255)"],
+							},
+							{
+								label: "Estacion N° 3",
+								borderColor:["rgb(0, 0, 0)"],
+							}
+							],
+						},
+						options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            							},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 10',
+										fontSize: 50,
+										padding:30,
+      									}
+   								 },
+    					},
+						});
+				}
+				if (data["EA"]=="E2"){
+				var myChart2 = new Chart(ctx2,{
+					type: "line",
+					data: {
+						labels:range(data["10"].length),
+						datasets:[
+							{
+								label: "Estacion N° 1",		
+								borderColor:["rgb(230, 230, 0)"],
+							},{
+								label: "Estacion N° 2",
+								data: data["10"],
+								borderColor:["rgb(153, 51, 255)"],
+							},
+							{
+								label: "Estacion N° 3",
+								borderColor:["rgb(0, 0, 0)"],
+							}
+							],
+						},
+						options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            							},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 10',
+										fontSize: 50,
+										padding:30,
+      									}
+   								 },
+    					},
+						});
+				}
+
+				if (data["EA"]=="E3"){
+				var myChart2 = new Chart(ctx2,{
+					type: "line",
+					data: {
+						labels:range(data["10"].length),
+						datasets:[	
+							{
+								label: "Estacion N° 1",	
+								borderColor:["rgb(230, 230, 0)"],
+							},{
+								label: "Estacion N° 2",						
+								borderColor:["rgb(153, 51, 255)"],
+							},
+							{
+								label: "Estacion N° 3",
+								data: data["10"],
+								borderColor:["rgb(0, 0, 0)"],
+							}			
+							],				
+						},
+						options: {
+						responsive: true,
+        					scales: {
+            					x: {
+									display:true,
+									title:{
+										display:true,
+										text:"N° de muestra",
+										color:"#0000ff",
+									},
+            							},
+								y: {
+									display:true,
+									title:{
+										display:true,
+										text:"μg/m^3",
+										color:"#0000ff",
+									},
+								},	
+       						},
+							   plugins: {
+      								title: {
+        								display: true,
+        								text: 'Niveles de material particulado 10',
+										fontSize: 50,
+										padding:30,
+      									}
+   								 },
+    					},
+						});
+				}
+
+				setTimeout(destruir,5000);
+				setInterval(getk,5000);
+				function destruir(){
+					if (myChart){
+						myChart.clear();
+						myChart.destroy();
+					}
+					if (myChart2){
+						myChart2.clear()
+						myChart2.destroy();
+						}
+					}
+			}
+			crear();
+		});
+		}
+		getk();
+	</script>
+</html>

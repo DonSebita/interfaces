@@ -1,18 +1,7 @@
 let m = L.map('map').setView([-38.740857,-72.594756],13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(m);
+let Arreglo=[]
 
-function clearMap() {
-    for(i in m._layers) {
-        if(m._layers[i]._path != undefined) {
-            try {
-                m.removeLayer(m._layers[i]);
-            }
-            catch(e) {
-                console.log("problem with " + e + m._layers[i]);
-            }
-        }
-    }
-}
 $(document).ready(function(){
     const Url="http://127.0.0.1:8000/rutas";
     function Envio(data){
@@ -30,62 +19,45 @@ $(document).ready(function(){
         })
     }
     function Trayecto(rest){
-        
+        Arreglo=[]
         dat=rest["data"]
-        //for (let step = 0; step < 100; step++) {
-        //    L.marker([dat[step][0],dat[step][1]]).addTo(map)
-        //}
-        L.polyline(dat).addTo(m)
-        console.log("")
+        for (let x = 0; x < dat.length-1; x++) {
+            Arreglo.push(dat[x])
+          }
+        L.Routing.control({waypoints: Arreglo}).addTo(m);
+        
     }
-    $("#btn1").click(function(even){
-        even.preventDefault();
-        clearMap()
+    $("#btn1").click(function(){
         Envio("1")
     })
-    $("#btn2").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("12")
+    $("#btn2").click(function(){
+        Envio("2")
     })
-    $("#btn3").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("123")
+    $("#btn3").click(function(){
+        Envio("3")
     })
-    $("#btn4").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("1234")
+    $("#btn4").click(function(){
+        Envio("4")
     })
-    $("#btn5").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("12345")
+    $("#btn5").click(function(){
+        Envio("5")
     })
-    $("#btn6").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("123456")
+    $("#btn6").click(function(){
+        Envio("6")
     })
-    $("#btn7").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("1234567")
+    $("#btn7").click(function(){
+        Envio("7")
     })
-    $("#btn8").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("12345678")
+    $("#btn8").click(function(){
+        Envio("8")
     })
-    $("#btn9").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("123456789")
+    $("#btn9").click(function(){
+        Envio("9")
     })
-    $("#btn10").click(function(even){
-        even.preventDefault();
-        clearMap()
-        Envio("0123456789")
+    $("#btn10").click(function(){
+        Envio("10")
+    })
+    $("#borrar").click(function(){
+        window.location.reload()
     })
 })
