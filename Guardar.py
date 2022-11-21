@@ -1,4 +1,4 @@
-import sqlite3,csv,json
+import sqlite3,csv
 
 #Funcion para poder guardar los datos de "rutas.csv" en la base de datos
 def Guardar():

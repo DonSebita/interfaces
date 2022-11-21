@@ -1,5 +1,5 @@
 import random as ra,requests as req, time as ti
-#1
+#1 y 2
 sURL = 'http://127.0.0.1:8000/Monitoreo'
 #3
 sURL2 = 'http://127.0.0.1:8000/marcadores'

@@ -16,35 +16,27 @@ function main() {
             // Podemos tener varios conjuntos de datos. Comencemos con uno
             const datos01 = {
                 label: "Material Particulado 0.1",
-                data: pr, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                data: pr, 
                 borderColor: 'blue',
-                borderWidth: 1,// Ancho del borde
-                tension: 0.1,
-                fill: false,
+                borderWidth: 1,
             };
             const datos25 = {
                 label: "Material Particulado 2.5",
-                data: pr1, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                data: pr1, 
                 borderColor: 'red',
-                borderWidth: 1,// Ancho del borde
-                tension: 0.1,
-                fill: false,
+                borderWidth: 1,
             };
             const datos10 = {
                 label: "Material Particulado 10",
-                data: pr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                data: pr2, 
                 borderColor: 'green',
-                borderWidth: 1,// Ancho del borde
-                tension: 0.1,
-                fill: false,
+                borderWidth: 1,
             };
             const datoste = {
                 label: "Temperatura",
-                data: tm, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                data: tm, 
                 borderColor: 'red',
-                borderWidth: 1,// Ancho del borde
-                tension: 0.1,
-                fill: false,
+                borderWidth: 1,
             };
             
             var myChart=new Chart(grafica, {
@@ -55,7 +47,6 @@ function main() {
                         datos01,
                         datos25,
                         datos10,
-                        // Aquí más datos...
                     ]
                 }, options: {
                     responsive: true,

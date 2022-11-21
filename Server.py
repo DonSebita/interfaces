@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
 import sqlite3,json,telepot, time
+
+
 app= Flask(__name__)
+
 @app.route("/")
 def index1():
     return render_template("app.html")
@@ -32,7 +35,6 @@ l = None
 def envio():
     if request.method == 'POST':
         bot = telepot.Bot(Token)
-        l=request.get_data()
         time.sleep(3)
         with open('grafico.png','rb') as photo_file:
             bot.sendPhoto(Id,photo=photo_file)
