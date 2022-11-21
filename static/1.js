@@ -93,16 +93,18 @@ function main() {
 
     });
 }
+
 function exportar(variable){
-    var img = variable.toBase64Image()
-    var codi = encodeURIComponent(img)
-    if (typeof codi == "string") {console.log("es un string")}
-    console.log(img)
+    img = "hola"
+    var link = document.createElement('a');
+    link.href = variable.toBase64Image();
+    link.download = 'grafico.png';
+    link.click();
+
     $.ajax({
         type: "POST",
         url: '/Envio',
-        data:codi,
-        success: function(){console.log("Datos enviados")}
+        data: img
     });
 }
 main()

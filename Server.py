@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import sqlite3,json,telepot, base64
+import sqlite3,json,telepot, time
 app= Flask(__name__)
 @app.route("/")
 def index1():
@@ -31,15 +31,13 @@ l = None
 @app.route("/Envio", methods=['POST'])
 def envio():
     if request.method == 'POST':
-        global l
+        bot = telepot.Bot(Token)
         l=request.get_data()
-        print(l)
-        print(l.decode('utf-8'))
-        #bot = telepot.Bot(Token)
-        #bot.sendPhoto(Id,)
-        return render_template("2.html")
+        time.sleep(3)
+        with open('grafico.png','rb') as photo_file:
+            bot.sendPhoto(Id,photo=photo_file)
+        return(print("enviado"))
     return render_template("error.html")
-
 #3
 f=None
 @app.route('/marcadores', methods=['GET','POST'])
